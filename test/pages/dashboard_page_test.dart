@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freedomcity/pages/dashboard_page.dart';
+import 'package:freedomcity/pages/messages_page.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Button is pressed and navigates to messages page', (WidgetTester tester) async {
 
     await tester.pumpWidget(const MaterialApp(home: Scaffold(body: DashboardPage())));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Messages'), findsOneWidget);
+    await tester.tap(find.text('Messages'));
+    await tester.pumpAndSettle();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byType(MessagesPage), findsOneWidget);
   });
 }

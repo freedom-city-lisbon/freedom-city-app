@@ -38,6 +38,17 @@ class _MyAppState extends State<MyApp> {
     OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
         // print("Accepted permission: $accepted");
     });
+
+    OneSignal.shared.setNotificationWillShowInForegroundHandler((OSNotificationReceivedEvent event) {
+      // Will be called whenever a notification is received in foreground
+      // Display Notification, pass null param for not displaying the notification
+      event.complete(event.notification);
+    });
+
+    OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+      // Will be called whenever a notification is opened/button pressed.
+      // TODO: view message
+    });
   }
 
   @override
