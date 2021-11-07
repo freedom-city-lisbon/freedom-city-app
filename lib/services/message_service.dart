@@ -15,7 +15,7 @@ class MessageService {
         if (response.statusCode == 200) {
           return MessageList.fromJson(response.body);
         } else {
-          throw Exception(response.body);
+          throw Exception("There was an error loading the messages");
         }
       });
 }

@@ -1,11 +1,19 @@
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 
-const developmentConfig = {
-  'baseUrl': 'http://localhost:8000'
-};
+class Config {
+  String baseUrl;
 
-const productionConfig = {
-  'baseUrl': 'https://api.freedomcity.pt'
-};
+  Config({
+    required this.baseUrl,
+  });
+}
 
-const config = isProduction ? productionConfig : developmentConfig;
+var developmentConfig = Config(
+  baseUrl: "https://fdf77993-c6da-47ca-9bf9-aa5298664215.mock.pstmn.io"
+);
+
+var productionConfig = Config(
+  baseUrl: "https://api.freedomcity.pt"
+);
+
+final config = isProduction ? productionConfig : developmentConfig;
