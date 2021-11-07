@@ -20,4 +20,16 @@ class Message {
   );
 
   factory Message.fromJson(String str) => Message.fromMap(json.decode(str));
+
+  Map<String, dynamic> toJson() => {
+    "title": title,
+    "body": body,
+  };
+
+  @override
+  bool operator ==(Object other) =>
+      (other is Message) ? (title == other.title && body == other.body) : false;
+
+  @override
+  int get hashCode => title.hashCode ^ body.hashCode;
 }

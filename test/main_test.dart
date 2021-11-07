@@ -3,10 +3,11 @@ import 'package:freedomcity/main.dart';
 import 'package:freedomcity/pages/dashboard_page.dart';
 
 void main() {
-  testWidgets('Dashboard is displayed', (WidgetTester tester) async {
+  group("$MyApp", () {
+    testWidgets("Dashboard is displayed", (WidgetTester tester) async {
+      await tester.pumpWidget(const MyApp());
 
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.byType(DashboardPage), findsOneWidget);
+      expect(find.byType(DashboardPage), findsOneWidget);
+    });
   });
 }
